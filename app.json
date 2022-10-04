@@ -1,6 +1,14 @@
 {
   "expo": {
-    "name": "mywallpaperapp",
+    "plugins": [
+      [
+        "expo-ads-admob",
+        {
+          "userTrackingPermission": "This identifier will be used to deliver personalized ads to you."
+        }
+      ]
+    ],
+    "name": "my wallpaper app",
     "slug": "mywallpaperapp",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -14,20 +22,27 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
     "android": {
+      "package": "com.skg.wallpaper",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
+      },
+      "config": {
+        "googleMobileAdsAppId": "ca-app-pub-7859617991614281~7075003995"
       }
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "cb439a83-6dd4-407e-b1d2-72cdf5e58b20"
+      }
     }
   }
 }
