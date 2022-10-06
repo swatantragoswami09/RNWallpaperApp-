@@ -13,6 +13,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { AdMobBanner, AdMobInterstitial } from "expo-ads-admob";
 import { PubBanner } from "../components/Ads/index";
+import Loader from "./Loader";
 
 const { height, width } = Dimensions.get("window");
 
@@ -20,8 +21,8 @@ const ImageComponent = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [images, setImages] = useState([]);
 
-  const loadWallpapers = () => {
-    axios
+  const loadWallpapers = async () => {
+    await axios
       .get(
         "https://api.unsplash.com/photos/random?count=30&client_id=thc1hEb-BPWhMDp12Wv8ZfYDoO9QzA9_oxLIFEEY8Wo"
       )
@@ -64,19 +65,16 @@ const ImageComponent = () => {
   return (
     <>
       {isLoading ? (
-        <TouchableOpacity onPress={() => console.log("hi there")}>
-          <View
-            style={{
-              flex: 1,
-              backgroundColor: "black",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <ActivityIndicator size="large" color="grey" />
-            <StatusBar style="auto" />
-          </View>
-        </TouchableOpacity>
+        <View
+          style={{
+            backgroundColor: "black",
+            flex: 1,
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Loader />
+        </View>
       ) : (
         <View style={{ flex: 1, backgroundColor: "black" }}>
           <FlatList
